@@ -3,7 +3,6 @@
 import glob
 import os
 import math
-import logging
 
 import cv2 as cv
 import numpy as np
