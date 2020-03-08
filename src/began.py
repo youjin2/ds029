@@ -15,9 +15,11 @@ from tensorflow.keras.layers import (
 from tensorflow.keras.losses import mean_absolute_error
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras import backend as K
+from tensorflow.python.framework.ops import disable_eager_execution
 
 from utils import config_gpu
 _ = config_gpu()
+disable_eager_execution()
 
 
 #############################################
@@ -36,8 +38,9 @@ LR_K = 0.001
 TOTAL_STEPS = 100000
 
 
-MODEL_SAVE_DIR = '../model/began_s/models'
-IMG_SAVE_DIR = '../model/began_s/imgs'
+MODEL_SAVE_DIR = '../model/began/models'
+IMG_SAVE_DIR = '../model/began/imgs'
+LOG_DIR = '../model/began/logs'
 
 # generate 5x5 image for verification
 IMG_SAMPLE_SHAPE = (5, 5)
@@ -45,6 +48,7 @@ N_IMG_SAMPLES = np.prod(IMG_SAMPLE_SHAPE)
 
 os.makedirs(MODEL_SAVE_DIR, exist_ok=True)
 os.makedirs(IMG_SAVE_DIR, exist_ok=True)
+os.makedirs(LOG_DIR, exist_ok=True)
 
 
 sample_seeds = np.random.uniform(
